@@ -21,7 +21,7 @@ function App() {
   }
   return (
     <div className="min-h-screen md:grid md:place-items-center">
-      <section className="bg-[url('images/bg-main-mobile.png')] md:bg-[url('images/bg-main-desktop.png')] h-64 md:h-screen w-full md:w-1/3 md:absolute md:top-0 md:left-0 md:bottom-0 bg-cover bg-no-repeat"></section>
+      <section className="bg-[url('./images/bg-main-mobile.png')] md:bg-[url('./images/bg-main-desktop.png')] h-64 md:h-screen w-full md:w-1/3 md:absolute md:top-0 md:left-0 md:bottom-0 bg-cover bg-no-repeat"></section>
       <main className="md:grid md:grid-cols-2 md:max-w-6xl md:px-16 md:mx-auto md:gap-16">
         <section className="h-64 md:h-full flex flex-col md:flex-col-reverse items-end md:items-start relative -translate-y-64 -mb-40 md:flex-1 md:translate-y-0 md:mb-0 md:gap-10">
           {/* start of backcard */}
