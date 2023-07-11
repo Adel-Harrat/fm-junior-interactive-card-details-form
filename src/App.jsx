@@ -14,10 +14,21 @@ function App() {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   function onSubmit(data) {
     setFormSuccess(true);
+  }
+
+  function resetForm() {
+    setCardNumber("0000 0000 0000 0000");
+    setCardName("Jane Appleseed");
+    setCardDateMM("00");
+    setCardDateYY("00");
+    setCardCVC("000");
+    setFormSuccess(false);
+    reset();
   }
   return (
     <div className="min-h-screen md:grid md:place-items-center">
@@ -73,8 +84,8 @@ function App() {
                   id="name"
                   type="text"
                   placeholder="e.g. Jane Appleseed"
-                  className={`ring-1 shadow-sm ring-zinc-950/20 focus:outline-none w-full rounded-xl p-3 focus:ring-tw-active-input-border-to transition ${
-                    errors.name ? "ring-tw-input-errors" : ""
+                  className={`ring-1 shadow-sm ring-zinc-950/20 focus:outline-none w-full rounded-xl px-5 p-3 focus:ring-tw-active-input-border-to transition ${
+                    errors.name && "!ring-tw-input-errors"
                   }`}
                   {...register("name", {
                     required: "Can't be blank",
@@ -99,8 +110,8 @@ function App() {
                   id="number"
                   type="text"
                   placeholder="e.g. 1234 5678 9123 0000"
-                  className={`ring-1 shadow-sm ring-zinc-950/20 focus:outline-none w-full rounded-xl p-3 focus:ring-tw-active-input-border-to transition ${
-                    errors.number ? "ring-tw-input-errors" : ""
+                  className={`ring-1 shadow-sm ring-zinc-950/20 focus:outline-none w-full rounded-xl px-5 p-3 focus:ring-tw-active-input-border-to transition ${
+                    errors.number && "!ring-tw-input-errors"
                   }`}
                   {...register("number", {
                     required: "Can't be blank",
@@ -130,8 +141,8 @@ function App() {
                       id="dateMM"
                       type="text"
                       placeholder="MM"
-                      className={`ring-1 shadow-sm ring-zinc-950/20 focus:outline-none w-full rounded-xl p-3 focus:ring-tw-active-input-border-to transition ${
-                        errors.dateMM ? "ring-tw-input-errors" : ""
+                      className={`ring-1 shadow-sm ring-zinc-950/20 focus:outline-none w-full rounded-xl px-5 p-3 focus:ring-tw-active-input-border-to transition ${
+                        errors.dateMM && "!ring-tw-input-errors"
                       }`}
                       {...register("dateMM", {
                         required: "Can't be blank",
@@ -142,8 +153,8 @@ function App() {
                       id="dateYY"
                       type="text"
                       placeholder="YY"
-                      className={`ring-1 shadow-sm ring-zinc-950/20 focus:outline-none w-full rounded-xl p-3 focus:ring-tw-active-input-border-to transition ${
-                        errors.dateYY ? "ring-tw-input-errors" : ""
+                      className={`ring-1 shadow-sm ring-zinc-950/20 focus:outline-none w-full rounded-xl px-5 p-3 focus:ring-tw-active-input-border-to transition ${
+                        errors.dateYY && "!ring-tw-input-errors"
                       }`}
                       {...register("dateYY", {
                         required: "Can't be blank",
@@ -174,8 +185,8 @@ function App() {
                     id="cvc"
                     type="text"
                     placeholder="e.g. 123"
-                    className={`ring-1 shadow-sm ring-zinc-950/20 focus:outline-none w-full rounded-xl p-3 focus:ring-tw-active-input-border-to transition ${
-                      errors.cvc ? "ring-tw-input-errors" : ""
+                    className={`ring-1 shadow-sm ring-zinc-950/20 focus:outline-none w-full rounded-xl px-5 p-3 focus:ring-tw-active-input-border-to transition ${
+                      errors.cvc && "!ring-tw-input-errors"
                     }`}
                     {...register("cvc", {
                       required: "Can't be blank",
@@ -214,7 +225,10 @@ function App() {
               <h2 className="text-tw-dark-gray text-center mt-3">
                 We've added your card details
               </h2>
-              <button className="w-full bg-tw-dark-violet text-tw-white capitalize rounded-xl py-3 mt-12">
+              <button
+                onClick={resetForm}
+                className="w-full bg-tw-dark-violet text-tw-white capitalize rounded-xl py-3 mt-12"
+              >
                 Continue
               </button>
             </article>
